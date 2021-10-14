@@ -7,14 +7,13 @@ export const useFetch = (url: string) => {
 
     useEffect(() => {
         setStatus('loading')
-
         ;(async () => {
             try {
                 const response = await fetch(url)
                 const jsonResp = await response.json()
                 setResponse(jsonResp)
                 setStatus('fetched')
-            } catch (err: any) {
+            } catch (err) {
                 setError(err)
                 setStatus('failed')
             }
