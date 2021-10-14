@@ -10,4 +10,7 @@ export const CategoriesList = styled.div`
     @media (min-width: 1350px) {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+    @media (max-width: 500px) {
+        grid-template-columns: 1fr 1fr;
+    }
 `

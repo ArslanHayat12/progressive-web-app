@@ -14,7 +14,8 @@ export const CategoryCardWrapper = styled.div`
     box-shadow: -7px 7px 5px ${DullBlack};
     font-family: 'Open Sans Semi Bold';
 
-    &:hover {
+    &:hover,
+    :active {
         cursor: pointer;
     }
 `
