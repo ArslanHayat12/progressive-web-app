@@ -14,15 +14,29 @@ export const CardWrapper = styled.div`
     :active {
         cursor: pointer;
     }
+
+    @media (max-width: 810px) {
+        grid-template-rows: 1fr 0.54fr;
+    }
+    @media (max-width: 580px) {
+        grid-template-rows: 1fr 0.94fr;
+    }
 `
 
 export const ImageWrapper = styled.div<ImageWrapperProps>`
     background: url(${(props) => props.imageUrl}) no-repeat center center;
     background-size: cover;
     border-radius: 5px;
-    min-height: 100px;
+    height: 100px;
     display: flex;
     align-items: end;
+
+    @media (max-width: 810px) {
+        height: 150px;
+    }
+    @media (max-width: 580px) {
+        height: 100px;
+    }
 `
 
 export const RankStyle = styled.p`
