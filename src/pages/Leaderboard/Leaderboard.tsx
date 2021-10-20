@@ -34,7 +34,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
         return top3.map((participant: Participant, index: number) => (
             <PointsCard participant={participant} rank={index + 1} key={participant.id} onClick={handleItemClick} />
         ))
-    }, [top3])
+    }, [top3, handleItemClick])
 
     return (
         <LeaderboardWrapper>

@@ -44,7 +44,7 @@ export const PointsTable: React.FC<PointsTableProps> = ({ participants, start = 
                 </StyledTableRow>
             )
         })
-    }, [participants, start])
+    }, [participants, start, onClick])
 
     return (
         <PointsTableWrapper>

@@ -1,6 +1,6 @@
 export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDivElement | null)[]) => {
     if (cardIndex > cardAtTop) {
-        for (let i: number = 0; i < cardIndex; i++) {
+        for (let i = 0; i < cardIndex; i++) {
             const card: HTMLDivElement | null = cards[i] // Getting the current card
 
             // Checking if the reference to the current card is not null
@@ -12,7 +12,7 @@ export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDiv
                 card.style.transform = `scale(${scale})`
 
                 // Stacking the next card on current card
-                cards[i + 1]!.style.marginTop = `-${cardHeight}px`
+                if (cards[i + 1] !== null) cards[i + 1].style.marginTop = `-${cardHeight}px`
             }
         }
     } else {

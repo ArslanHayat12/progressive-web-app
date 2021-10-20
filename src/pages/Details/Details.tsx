@@ -15,7 +15,7 @@ export const Details = () => {
     }, [history])
 
     const cards = useMemo(() => {
-        let content = []
+        const content = []
 
         for (let i = 0; i < 5; i++) {
             content.push(
