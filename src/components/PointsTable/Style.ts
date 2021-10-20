@@ -26,6 +26,11 @@ export const StyledTableRow = styled.div`
     padding: 15px 0px;
     border-bottom: 1px solid rgba(112, 112, 112, 0.18);
     align-items: center;
+
+    &:hover,
+    :active {
+        cursor: pointer;
+    }
 `
 
 export const StyledRankColumn = styled.div`

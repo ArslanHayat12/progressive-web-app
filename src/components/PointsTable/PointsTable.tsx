@@ -15,9 +15,10 @@ import {
 type PointsTableProps = {
     participants: Participant[]
     start?: number
+    onClick?: (id: number) => void
 }
 
-export const PointsTable: React.FC<PointsTableProps> = ({ participants, start = 0 }) => {
+export const PointsTable: React.FC<PointsTableProps> = ({ participants, start = 0, onClick }) => {
     const ParticipantsTableHeader = useMemo(() => {
         return (
             <StyledTableHeader>
@@ -30,10 +31,10 @@ export const PointsTable: React.FC<PointsTableProps> = ({ participants, start = 
 
     const ParticipantsTable = useMemo(() => {
         return participants.map((participant: Participant, index: number) => {
-            const { name, avatar, points } = participant
+            const { id, name, avatar, points } = participant
             const rank = index + start + 1
             return (
-                <StyledTableRow key={index}>
+                <StyledTableRow key={index} onClick={() => onClick(id)}>
                     <StyledRankColumn>{rank < 10 ? `0${rank}` : rank}</StyledRankColumn>
                     <StyledAvatarColumn>
                         <Image srcUrl={avatar} type="avatar" />

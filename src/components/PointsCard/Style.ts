@@ -9,6 +9,11 @@ export const CardWrapper = styled.div`
     grid-template-rows: 1fr 0.94fr;
     border-radius: 5px;
     box-shadow: 0 0 6px 0 ${DullBlack};
+
+    &:hover,
+    :active {
+        cursor: pointer;
+    }
 `
 
 export const ImageWrapper = styled.div<ImageWrapperProps>`

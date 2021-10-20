@@ -19,15 +19,22 @@ export const Leaderboard = (props: LeaderboardProps) => {
 
     const top3 = participants.slice(0, 3)
 
-    const Top3Participants = useMemo(() => {
-        return top3.map((participant: Participant, index: number) => (
-            <PointsCard participant={participant} rank={index + 1} key={participant.id} />
-        ))
-    }, [top3])
-
     const handleBackButtonClick = useCallback(() => {
         history.goBack()
     }, [history])
+
+    const handleItemClick = useCallback(
+        (id: number) => {
+            history.push(`/leaderboard/${id}`)
+        },
+        [history]
+    )
+
+    const Top3Participants = useMemo(() => {
+        return top3.map((participant: Participant, index: number) => (
+            <PointsCard participant={participant} rank={index + 1} key={participant.id} onClick={handleItemClick} />
+        ))
+    }, [top3])
 
     return (
         <LeaderboardWrapper>
@@ -37,13 +44,13 @@ export const Leaderboard = (props: LeaderboardProps) => {
                 <Top3Wrapper>{Top3Participants}</Top3Wrapper>
             ) : (
                 <React.Fragment>
-                    <PointsCardIndividual participant={participants[0]} />
+                    <PointsCardIndividual participant={participants[0]} onClick={handleItemClick} />
 
                     <Top10Heading>{TOP10}</Top10Heading>
                 </React.Fragment>
             )}
 
-            <PointsTable participants={participants.slice(3)} start={3} />
+            <PointsTable participants={participants.slice(3)} start={3} onClick={handleItemClick} />
         </LeaderboardWrapper>
     )
 }

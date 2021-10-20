@@ -7,9 +7,11 @@ type ImageProps = {
     type: ImageType
     size?: AvatarSize
     width?: 'fixed' | 'auto'
+    customWidth?: string
+    customHeight?: string
 }
 
-export const Image: React.FC<ImageProps> = ({ srcUrl, type, size = 'small', width = 'fixed' }) => {
+export const Image: React.FC<ImageProps> = ({ srcUrl, type, size = 'small', width = 'fixed', customWidth, customHeight }) => {
     return (
         <>
             {type === 'avatar' ? (
@@ -17,7 +19,7 @@ export const Image: React.FC<ImageProps> = ({ srcUrl, type, size = 'small', widt
             ) : type === 'logo' ? (
                 <StyledLogo src={srcUrl} />
             ) : (
-                <StyledImage src={srcUrl} width={width} />
+                <StyledImage src={srcUrl} width={width} customWidth={customWidth} customHeight={customHeight} />
             )}
         </>
     )

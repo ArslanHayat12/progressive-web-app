@@ -15,13 +15,14 @@ import {
 type PointsCardProps = {
     rank: number
     participant: Participant
+    onClick?: (id: number) => void
 }
 
-export const PointsCard: React.FC<PointsCardProps> = ({ rank, participant }) => {
-    const { name, avatar, points } = participant
+export const PointsCard: React.FC<PointsCardProps> = ({ rank, participant, onClick }) => {
+    const { id, name, avatar, points } = participant
 
     return (
-        <CardWrapper>
+        <CardWrapper onClick={() => onClick(id)}>
             <ImageWrapper imageUrl={avatar}>
                 <RankStyle>{rank < 10 ? `0${rank}` : rank}</RankStyle>
             </ImageWrapper>

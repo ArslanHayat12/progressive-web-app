@@ -13,6 +13,11 @@ export const CardWrapper = styled.div`
     background: ${DeepSkyBlue};
     margin-top: 20px;
     padding: 20px 25px 10px;
+
+    &:hover,
+    :active {
+        cursor: pointer;
+    }
 `
 
 export const ParticipantDetails = styled.div`

@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import { AvatarSize } from '../../types'
 
 type StyledAvatarProps = { size: AvatarSize }
-type StyledImageProps = { width: 'fixed' | 'auto' }
+type StyledImageProps = { width: 'fixed' | 'auto'; customWidth?: string; customHeight?: string }
 
 export const StyledImage = styled.img<StyledImageProps>`
-    width: ${(props) => (props.width === 'fixed' ? '100px' : 'auto')};
+    width: ${(props) => (props.customWidth ? props.customWidth : props.width === 'fixed' ? '100px' : 'auto')};
+    ${(props) => props.customHeight && `height: ${props.customHeight};`}
 `
 
 export const StyledAvatar = styled.img<StyledAvatarProps>`
