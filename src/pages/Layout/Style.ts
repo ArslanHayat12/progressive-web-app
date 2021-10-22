@@ -5,7 +5,7 @@ const Border = DullWhite(0.19)
 
 export const AppLayout = styled.div`
     display: grid;
-    grid-template-rows: auto auto 50px;
+    grid-template-rows: 70px auto 50px;
     height: 100vh;
 `
 
