@@ -16,6 +16,6 @@ export const Top10Heading = styled.h2`
     color: ${White};
     margin: 20px;
     margin-bottom: 10px;
-    font-family: 'Open Sans Bold';
+    font-weight: 700;
     font-size: 14px;
 `

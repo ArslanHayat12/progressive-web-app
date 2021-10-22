@@ -8,7 +8,7 @@ export const CardWrapper = styled.div`
     display: grid;
     grid-template-rows: 1fr 0.94fr;
     border-radius: 5px;
-    box-shadow: 0 0 6px 0 ${DullBlack};
+    box-shadow: 0 0 6px 0 ${DullBlack(0.16)};
 
     &:hover,
     :active {
@@ -42,8 +42,8 @@ export const ImageWrapper = styled.div<ImageWrapperProps>`
 export const RankStyle = styled.p`
     margin: 0px 0px 5px 10px;
     font-size: 16px;
-    font-family: 'Open Sans Bold';
-    text-shadow: 0px 0px 3px ${DullBlack};
+    font-weight: 700;
+    text-shadow: 0px 0px 3px ${DullBlack(0.16)};
 `
 
 export const DetailsWrapper = styled.div`
@@ -56,7 +56,7 @@ export const DetailsWrapper = styled.div`
 export const NameStyle = styled.p`
     margin: 0px;
     font-size: 14px;
-    font-family: 'Open Sans Semi Bold', sans-serif;
+    font-weight: 600;
 `
 
 export const PointsDetailCard = styled.div`
@@ -77,6 +77,6 @@ export const PointsLabel = styled.p`
 export const PointsStyle = styled.p`
     color: ${DeepSkyBlue};
     margin: 0px;
-    font-family: 'Open Sans Bold';
+    font-weight: 700;
     font-size: 16px;
 `
