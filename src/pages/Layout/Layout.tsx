@@ -9,6 +9,7 @@ import { BACK, HOME } from '../../constants'
 
 export const Layout = () => {
     const logoUrl = `${window.location.origin}/logo192.png`
+    const userImage = `${window.location.origin}/Portrait.jpg`
     const history = useHistory()
 
     const goBack = useCallback(() => {
@@ -23,6 +24,7 @@ export const Layout = () => {
         <AppLayout>
             <NavBar>
                 <Image type="logo" srcUrl={logoUrl} />
+                <Image type="avatar" srcUrl={userImage} size="small" />
             </NavBar>
 
             <Content>

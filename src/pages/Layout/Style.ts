@@ -10,6 +10,9 @@ export const AppLayout = styled.div`
 `
 
 export const NavBar = styled.div`
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
     padding: 15px;
     border-bottom: 1px solid ${Border};
 `
