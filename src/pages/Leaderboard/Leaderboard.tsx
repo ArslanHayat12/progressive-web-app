@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
-import { LEADERBOARD, TOP10 } from '../../constants'
-import Header from '../../components/Header'
+import { TOP10 } from '../../constants'
 import { LeaderboardWrapper, Top10Heading, Top3Wrapper } from './Style'
 import PointsCard from '../../components/PointsCard'
 import { participants } from './leaderboardData'
@@ -8,6 +7,7 @@ import { Participant } from '../../types'
 import PointsTable from '../../components/PointsTable'
 import PointsCardIndividual from '../../components/PointsCardIndividual'
 import { useHistory } from 'react-router-dom'
+import TabList from '../../components/TabList'
 
 type LeaderboardProps = {
     type: 'individual' | 'common'
@@ -17,11 +17,9 @@ export const Leaderboard = (props: LeaderboardProps) => {
     const { type } = props
     const history = useHistory()
 
-    const top3 = participants.slice(0, 3)
+    const tabsList = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4']
 
-    const handleBackButtonClick = useCallback(() => {
-        history.goBack()
-    }, [history])
+    const top3 = participants.slice(0, 3)
 
     const handleItemClick = useCallback(
         (id: number) => {
@@ -38,7 +36,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
 
     return (
         <LeaderboardWrapper>
-            <Header heading={LEADERBOARD} onBackClick={handleBackButtonClick} />
+            <TabList tabs={tabsList} />
 
             {type === 'common' ? (
                 <Top3Wrapper>{Top3Participants}</Top3Wrapper>
