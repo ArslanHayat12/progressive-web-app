@@ -5,7 +5,7 @@ const Border = DullWhite(0.19)
 
 export const AppLayout = styled.div`
     display: grid;
-    grid-template-rows: 70px auto 50px;
+    grid-template-rows: 61px auto 50px;
     height: 100vh;
 `
 
@@ -19,6 +19,7 @@ export const NavBar = styled.div`
 
 export const Content = styled.div`
     overflow-y: scroll;
+    scrollbar-width: none;
 `
 
 export const Footer = styled.div`
