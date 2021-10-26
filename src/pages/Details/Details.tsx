@@ -1,18 +1,12 @@
-import React, { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
 import StackedCardCarousel from '../../components/StackedCardCarousel'
 import { DetailsWrapper } from './Style'
-import { useHistory } from 'react-router-dom'
-import Header from '../../components/Header'
-import { LEADERBOARD } from '../../constants'
 import { MediumDarkCyanBlue1, White } from '../../colors'
 import Image from '../../components/Image'
+import TabList from '../../components/TabList'
 
 export const Details = () => {
-    const history = useHistory()
-
-    const handleBackButtonClick = useCallback(() => {
-        history.goBack()
-    }, [history])
+    const tabsList = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4']
 
     const cards = useMemo(() => {
         const content = []
@@ -28,7 +22,7 @@ export const Details = () => {
 
     return (
         <DetailsWrapper>
-            <Header heading={LEADERBOARD} onBackClick={handleBackButtonClick} />
+            <TabList tabs={tabsList} />
 
             <StackedCardCarousel cardsContent={cards} cardsBackgroundColor={MediumDarkCyanBlue1} cardsContentColor={White} />
         </DetailsWrapper>

@@ -9,7 +9,7 @@ export const PointsTableWrapper = styled.div`
 export const StyledTableHeader = styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    font-family: 'Open Sans Bold';
+    font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
     border-bottom: 2px solid rgba(238, 242, 246, 0.36);
@@ -34,7 +34,7 @@ export const StyledTableRow = styled.div`
 `
 
 export const StyledRankColumn = styled.div`
-    font-family: 'Open Sans Bold';
+    font-weight: 700;
     font-size: 16px;
     color: ${MediumDarkCyanBlue};
 `
@@ -48,5 +48,5 @@ export const StyledNameColumn = styled.div`
 
 export const StyledScoreColumn = styled(StyledScoreColumnHeader)`
     color: ${DeepSkyBlue};
-    font-family: 'Open Sans Bold';
+    font-weight: 700;
 `

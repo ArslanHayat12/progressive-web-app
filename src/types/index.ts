@@ -14,5 +14,7 @@ export type CategoryType = {
 }
 export type AvatarSize = 'small' | 'medium' | 'large'
 export type ImageType = 'avatar' | 'logo' | 'image'
-export type FontWeight = 'regular' | 'semi-bold' | 'bold'
 export type AlignType = 'left' | 'center' | 'right'
+export type ButtonType = 'navigation' | 'default'
+export type CategoryCardType = 'text-with-image' | 'text-with-icon' | 'text'
+export type ImageCardType = 'points-card' | 'category-card'

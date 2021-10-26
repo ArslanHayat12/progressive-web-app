@@ -29,6 +29,6 @@ export const StyledAvatar = styled.img<StyledAvatarProps>`
 `
 
 export const StyledLogo = styled.img`
-    width: 40px;
-    height: 40px;
+    width: 31px;
+    height: 31px;
 `
