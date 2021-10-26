@@ -3,6 +3,8 @@ import { MediumDarkCyanBlue1, DullBlack, DullWhite } from '../../colors'
 
 export const CategoryCardWrapper = styled.div`
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     height: 200px;
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid ${DullWhite(0.16)};
@@ -18,4 +20,8 @@ export const CategoryCardWrapper = styled.div`
     :active {
         cursor: pointer;
     }
+`
+
+export const IconWrapper = styled.div`
+    font-size: 2em;
 `

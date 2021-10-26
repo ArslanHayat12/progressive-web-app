@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 import { DarkCyanBlue, DeepSkyBlue, DullBlack, White } from '../../colors'
+import { ImageCardType } from '../../types'
 
 type ImageWrapperProps = { imageUrl: string }
 
-export const CardWrapper = styled.div`
+type CardType = { type: ImageCardType }
+
+export const CardWrapper = styled.div<CardType>`
     background: ${DarkCyanBlue};
     display: grid;
     grid-template-rows: 1fr 0.94fr;
@@ -19,7 +22,7 @@ export const CardWrapper = styled.div`
         grid-template-rows: 1fr 0.54fr;
     }
     @media (max-width: 580px) {
-        grid-template-rows: 1fr 0.94fr;
+        grid-template-rows: 1fr ${(props) => (props.type === 'category-card' ? '0.60fr' : '0.94fr')};
     }
 `
 
@@ -46,11 +49,12 @@ export const RankStyle = styled.p`
     text-shadow: 0px 0px 3px ${DullBlack(0.16)};
 `
 
-export const DetailsWrapper = styled.div`
+export const DetailsWrapper = styled.div<CardType>`
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr ${(props) => props.type === 'points-card' && '1fr'};
     padding: 8px 10px;
     align-items: center;
+    ${(props) => props.type === 'category-card' && 'text-align: center;'}
 `
 
 export const NameStyle = styled.p`
