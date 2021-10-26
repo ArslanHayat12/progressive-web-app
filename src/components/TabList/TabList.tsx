@@ -17,7 +17,7 @@ export const TabList: React.FC<TabListProps> = ({ tabs }) => {
         return tabs.map((tab, index) => (
             <Tab text={tab} active={index === activeTabIndex} handleClick={() => handleTabClick(index)} key={index} />
         ))
-    }, [tabs, activeTabIndex])
+    }, [tabs, activeTabIndex, handleTabClick])
 
     return <TabWrapper>{renderTabs}</TabWrapper>
 }

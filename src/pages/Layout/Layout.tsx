@@ -18,7 +18,7 @@ export const Layout = () => {
 
     const goToHome = useCallback(() => {
         history.push(URLS.categories)
-    }, [history, URLS.categories])
+    }, [history])
 
     return (
         <AppLayout>

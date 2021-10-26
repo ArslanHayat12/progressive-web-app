@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { DullBlack, DullWhite } from '../../colors'
+import { DullBlack } from '../../colors'
 
 export const TabWrapper = styled.div`
     display: grid;

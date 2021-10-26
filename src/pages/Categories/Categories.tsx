@@ -11,7 +11,7 @@ export const Categories = () => {
 
     const renderCategories = useMemo(() => {
         return categories.map((category: CategoryType) => {
-            const cardImage: string = `${window.location.origin}/stacked-card-dummy-image.jpg`
+            const cardImage = `${window.location.origin}/stacked-card-dummy-image.jpg`
             const cardType: CategoryCardType = 'text-with-image'
 
             return (

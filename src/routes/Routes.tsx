@@ -1,6 +1,6 @@
 import React from 'react'
 import Categories from '../pages/Categories'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Leaderboard from '../pages/Leaderboard'
 import { URLS } from './urls'
 import Details from '../pages/Details'
