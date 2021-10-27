@@ -9,7 +9,8 @@ module.exports = {
         }
     },
     output: {
-        path: path.resolve(__dirname, 'build/static')
+        path: path.resolve(__dirname, 'build/static'),
+        publicPath: '/'
     },
     devServer: {
         port: 3000,
