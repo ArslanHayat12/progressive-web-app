@@ -4,7 +4,7 @@ export const participants: Participant[] = [
     {
         id: 1,
         name: 'Benjamin Griffin',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 995,
         correctAnswers: 4,
         totalQuestions: 5
@@ -12,7 +12,7 @@ export const participants: Participant[] = [
     {
         id: 2,
         name: 'Sara Ramirez',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 987,
         correctAnswers: 4,
         totalQuestions: 5
@@ -20,7 +20,7 @@ export const participants: Participant[] = [
     {
         id: 3,
         name: 'Patricia Reid',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 987,
         correctAnswers: 4,
         totalQuestions: 5
@@ -28,7 +28,7 @@ export const participants: Participant[] = [
     {
         id: 4,
         name: 'Kevin Clark',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 874,
         correctAnswers: 4,
         totalQuestions: 5
@@ -36,7 +36,7 @@ export const participants: Participant[] = [
     {
         id: 5,
         name: 'Bianca Lucas',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 1732,
         correctAnswers: 4,
         totalQuestions: 5
@@ -44,7 +44,7 @@ export const participants: Participant[] = [
     {
         id: 6,
         name: 'Jerry Ford',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 2429,
         correctAnswers: 4,
         totalQuestions: 5
@@ -52,7 +52,7 @@ export const participants: Participant[] = [
     {
         id: 7,
         name: 'Joan Fisher',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 4695,
         correctAnswers: 4,
         totalQuestions: 5
@@ -60,7 +60,7 @@ export const participants: Participant[] = [
     {
         id: 8,
         name: 'Joan Fisher',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 4695,
         correctAnswers: 4,
         totalQuestions: 5
@@ -68,7 +68,7 @@ export const participants: Participant[] = [
     {
         id: 9,
         name: 'Joan Fisher',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 4695,
         correctAnswers: 4,
         totalQuestions: 5
@@ -76,7 +76,7 @@ export const participants: Participant[] = [
     {
         id: 10,
         name: 'Joan Fisher',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 4695,
         correctAnswers: 4,
         totalQuestions: 5
@@ -84,7 +84,7 @@ export const participants: Participant[] = [
     {
         id: 11,
         name: 'Joan Fisher',
-        avatar: `${window.location.origin}/Portrait.jpg`,
+        avatar: `${window.location.origin}/images/Portrait.jpg`,
         points: 4695,
         correctAnswers: 4,
         totalQuestions: 5

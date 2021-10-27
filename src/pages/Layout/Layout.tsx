@@ -8,8 +8,8 @@ import { URLS } from '../../routes/urls'
 import { BACK, HOME } from '../../constants'
 
 export const Layout = () => {
-    const logoUrl = `${window.location.origin}/logo192.png`
-    const userImage = `${window.location.origin}/Portrait.jpg`
+    const logoUrl = `${window.location.origin}/images/logo.png`
+    const userImage = `${window.location.origin}/images/Portrait.jpg`
     const history = useHistory()
 
     const goBack = useCallback(() => {

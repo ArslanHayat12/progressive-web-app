@@ -13,7 +13,7 @@ export const Details = () => {
 
         for (let i = 0; i < 5; i++) {
             content.push(
-                <Image srcUrl={`${window.location.origin}/stacked-card-dummy-image.jpg`} type="image" customWidth="100%" />
+                <Image srcUrl={`${window.location.origin}/images/stacked-card-dummy-image.jpg`} type="image" customWidth="100%" />
             )
         }
 

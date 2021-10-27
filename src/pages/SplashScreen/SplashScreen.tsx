@@ -5,7 +5,7 @@ import { SplashScreenWrapper } from './Style'
 export const SplashScreen = () => {
     return (
         <SplashScreenWrapper>
-            <Image type="image" srcUrl={`${window.location.origin}/logo192.png`} />
+            <Image type="image" srcUrl={`${window.location.origin}/images/logo.png`} />
         </SplashScreenWrapper>
     )
 }
