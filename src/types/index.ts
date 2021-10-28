@@ -11,6 +11,7 @@ export type CategoryType = {
     name: string
     icon: string
     url: string
+    image?: string
 }
 export type AvatarSize = 'small' | 'medium' | 'large'
 export type ImageType = 'avatar' | 'logo' | 'image'

@@ -6,9 +6,10 @@ import Button from '../../components/Button'
 import { useHistory } from 'react-router-dom'
 import { URLS } from '../../routes/urls'
 import { BACK, HOME } from '../../constants'
+import Text from '../../components/Text'
+import { White } from '../../colors'
 
 export const Layout = () => {
-    const logoUrl = `${window.location.origin}/images/logo.png`
     const userImage = `${window.location.origin}/images/Portrait.jpg`
     const history = useHistory()
 
@@ -23,7 +24,7 @@ export const Layout = () => {
     return (
         <AppLayout>
             <NavBar>
-                <Image type="logo" srcUrl={logoUrl} />
+                <Text text="Jugari.com" weight="700" color={White} />
                 <Image type="avatar" srcUrl={userImage} size="small" />
             </NavBar>
 
