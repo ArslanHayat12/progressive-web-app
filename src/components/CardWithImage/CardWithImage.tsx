@@ -30,7 +30,7 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ type, rank, name, 
             </ImageWrapper>
 
             <DetailsWrapper type={type}>
-                <NameStyle>{type === 'points-card' ? name : text}</NameStyle>
+                <NameStyle type={type}>{type === 'points-card' ? name : text}</NameStyle>
                 {type === 'points-card' && (
                     <PointsDetailCard>
                         <PointsLabel>{POINTS}</PointsLabel>

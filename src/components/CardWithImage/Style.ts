@@ -57,10 +57,24 @@ export const DetailsWrapper = styled.div<CardType>`
     ${(props) => props.type === 'category-card' && 'text-align: center;'}
 `
 
-export const NameStyle = styled.p`
+export const NameStyle = styled.p<CardType>`
     margin: 0px;
     font-size: 14px;
     font-weight: 600;
+
+    ${(props) =>
+        props.type === 'category-card' &&
+        `
+        @media (min-width: 326px) {
+            font-size: 14px;
+        }
+        @media (max-width: 325px) {
+            font-size: 11px;
+        }
+        @media (max-width: 315px) {
+            font-size: 10px;
+        }
+    `}
 `
 
 export const PointsDetailCard = styled.div`

@@ -3,14 +3,19 @@ import styled from 'styled-components'
 export const CategoriesList = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    margin: 20px 30px;
+    gap: 10px;
+    margin: 20px 15px;
 
-    @media (min-width: 1350px) {
+    @media (min-width: 811px) {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+    @media (max-width: 810px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
     @media (max-width: 500px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 300px) {
         grid-template-columns: 1fr 1fr;
     }
 `
