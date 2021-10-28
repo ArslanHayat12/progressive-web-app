@@ -6,3 +6,5 @@ export const POINTS = 'Points'
 
 export const HOME = 'Home'
 export const BACK = 'Back'
+
+export const APP_NAME = 'Jugari.com'
