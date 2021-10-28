@@ -19,6 +19,8 @@ export const StyledButton = styled.button<ButtonProps>`
                 return `
                     background: transparent;
                     font-weight: 600;
+                    color: ${White};
+                    text-decoration: underline;
                 `
             case 'default':
                 return `
