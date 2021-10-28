@@ -11,18 +11,10 @@ export const Categories = () => {
 
     const renderCategories = useMemo(() => {
         return categories.map((category: CategoryType) => {
-            const cardImage = `${window.location.origin}/images/stacked-card-dummy-image.jpg`
+            const { id, name, image, url } = category
             const cardType: CategoryCardType = 'text-with-image'
 
-            return (
-                <CategoryCard
-                    key={category.id}
-                    type={cardType}
-                    text={category.name}
-                    image={cardImage}
-                    handleClick={() => history.push(category.url)}
-                />
-            )
+            return <CategoryCard key={id} type={cardType} text={name} image={image} handleClick={() => history.push(url)} />
         })
     }, [categories, history])
 
