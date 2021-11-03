@@ -8,3 +8,6 @@ export const HOME = 'Home'
 export const BACK = 'Back'
 
 export const APP_NAME = 'Jugari.com'
+
+export const SET_DATA = 'SET_DATA'
+export const SET_IS_HOME_SCREEN = 'SET_IS_HOME_SCREEN'

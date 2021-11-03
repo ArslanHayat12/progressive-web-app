@@ -19,3 +19,12 @@ export type AlignType = 'left' | 'center' | 'right'
 export type ButtonType = 'navigation' | 'default'
 export type CategoryCardType = 'text-with-image' | 'text-with-icon' | 'text'
 export type ImageCardType = 'points-card' | 'category-card'
+
+export type Action = {
+    type: string
+    payload?: any
+}
+
+export type AppContextState = {
+    isHomeScreen: boolean
+}

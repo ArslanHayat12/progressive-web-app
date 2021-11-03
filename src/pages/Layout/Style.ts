@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 import { DullBlack, DullWhite } from '../../colors'
 
+type LayoutProps = { isHomeScreen: boolean }
+
 const Border = DullWhite(0.19)
 
-export const AppLayout = styled.div`
+export const AppLayout = styled.div<LayoutProps>`
     display: grid;
-    grid-template-rows: 61px auto 50px;
+    grid-template-rows: 61px auto ${(props) => !props.isHomeScreen && '50px'};
     height: 100vh;
 `
 

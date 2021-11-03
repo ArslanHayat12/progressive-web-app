@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react'
-import { TOP10 } from '../../constants'
+import React, { useCallback, useEffect, useMemo } from 'react'
+import { SET_IS_HOME_SCREEN, TOP10 } from '../../constants'
 import { LeaderboardWrapper, Top10Heading, Top3Wrapper } from './Style'
 import PointsCard from '../../components/PointsCard'
 import { participants } from './leaderboardData'
@@ -8,6 +8,7 @@ import PointsTable from '../../components/PointsTable'
 import PointsCardIndividual from '../../components/PointsCardIndividual'
 import { useHistory } from 'react-router-dom'
 import TabList from '../../components/TabList'
+import { useAppContext } from '../../contexts/AppContext'
 
 type LeaderboardProps = {
     type: 'individual' | 'common'
@@ -16,6 +17,10 @@ type LeaderboardProps = {
 export const Leaderboard = (props: LeaderboardProps) => {
     const { type } = props
     const history = useHistory()
+    const {
+        state: { isHomeScreen },
+        dispatch
+    } = useAppContext()
 
     const tabsList = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4']
 
@@ -33,6 +38,10 @@ export const Leaderboard = (props: LeaderboardProps) => {
             <PointsCard participant={participant} rank={index + 1} key={participant.id} onClick={handleItemClick} />
         ))
     }, [top3, handleItemClick])
+
+    useEffect(() => {
+        if (isHomeScreen) dispatch({ type: SET_IS_HOME_SCREEN, payload: false })
+    }, [dispatch, isHomeScreen])
 
     return (
         <LeaderboardWrapper>

@@ -8,10 +8,14 @@ import { URLS } from '../../routes/urls'
 import { APP_NAME, BACK, HOME } from '../../constants'
 import Text from '../../components/Text'
 import { White } from '../../colors'
+import { useAppContext } from '../../contexts/AppContext'
 
 export const Layout = () => {
     const userImage = `${window.location.origin}/images/Portrait.jpg`
     const history = useHistory()
+    const {
+        state: { isHomeScreen }
+    } = useAppContext()
 
     const goBack = useCallback(() => {
         history.goBack()
@@ -22,7 +26,7 @@ export const Layout = () => {
     }, [history])
 
     return (
-        <AppLayout>
+        <AppLayout isHomeScreen={isHomeScreen}>
             <NavBar>
                 <Text text={APP_NAME} weight="700" color={White} />
                 <Image type="avatar" srcUrl={userImage} size="small" />
@@ -32,11 +36,13 @@ export const Layout = () => {
                 <Routes />
             </Content>
 
-            <Footer>
-                <Button text={HOME} type="navigation" handleClick={goToHome} />
-                <Divider />
-                <Button text={BACK} type="navigation" handleClick={goBack} />
-            </Footer>
+            {!isHomeScreen && (
+                <Footer>
+                    <Button text={HOME} type="navigation" handleClick={goToHome} />
+                    <Divider />
+                    <Button text={BACK} type="navigation" handleClick={goBack} />
+                </Footer>
+            )}
         </AppLayout>
     )
 }
