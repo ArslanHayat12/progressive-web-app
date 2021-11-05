@@ -31,7 +31,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
         (id: number) => {
             history.push(`/${category}/${subCategory}/top10/${id}`)
         },
-        [history]
+        [history, category, subCategory]
     )
 
     const Top3Participants = useMemo(() => {

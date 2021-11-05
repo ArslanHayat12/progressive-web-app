@@ -47,7 +47,7 @@ const getSubcategoriesRecursion = (category: CategoryType) => {
         return category
     } else {
         for (let i = 0; i < category.data.length; i++) {
-            let categoryObject = getSubcategoriesRecursion(category.data[i])
+            const categoryObject = getSubcategoriesRecursion(category.data[i])
 
             if (Array.isArray(categoryObject)) {
                 allSubcategories = [...allSubcategories, ...categoryObject]
@@ -61,14 +61,14 @@ const getSubcategoriesRecursion = (category: CategoryType) => {
 }
 
 export const getSubcategories = (categories: CategoryType[], category: string) => {
-    let desiredCategory = categories.filter((categoryItem) => categoryItem.slug === category)
-    let subCategories: CategoryType[] = []
+    const desiredCategory = categories.filter((categoryItem) => categoryItem.slug === category)
+    const subCategories: CategoryType[] = []
 
     if (desiredCategory.length > 0) {
-        let categoryData = desiredCategory[0].data
+        const categoryData = desiredCategory[0].data
 
         for (let i = 0; i < categoryData.length; i++) {
-            let subCategoriesData = getSubcategoriesRecursion(categoryData[i])
+            const subCategoriesData = getSubcategoriesRecursion(categoryData[i])
 
             if (Array.isArray(subCategoriesData)) {
                 subCategories.push(...subCategoriesData)

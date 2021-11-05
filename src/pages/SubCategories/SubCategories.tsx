@@ -7,7 +7,6 @@ import { useAppContext } from '../../contexts/AppContext'
 import { SET_IS_HOME_SCREEN } from '../../constants'
 import { data } from '../../data'
 import { getSubcategories } from '../../utils'
-import { URLS } from '../../routes/urls'
 
 export const SubCategories = () => {
     const history = useHistory()
@@ -37,7 +36,7 @@ export const SubCategories = () => {
                 />
             )
         })
-    }, [subCategories, history])
+    }, [subCategories, history, category])
 
     return <SubCategoriesList>{renderSubCategories}</SubCategoriesList>
 }
