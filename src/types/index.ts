@@ -7,11 +7,12 @@ export type Participant = {
     totalQuestions: number
 }
 export type CategoryType = {
-    id: number
+    id: string
     name: string
-    icon: string
-    url: string
+    slug: string
     image?: string
+    icon?: string
+    data?: CategoryType[]
 }
 export type AvatarSize = 'small' | 'medium' | 'large'
 export type ImageType = 'avatar' | 'logo' | 'image'

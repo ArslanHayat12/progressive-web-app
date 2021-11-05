@@ -6,7 +6,7 @@ import { participants } from './leaderboardData'
 import { Participant } from '../../types'
 import PointsTable from '../../components/PointsTable'
 import PointsCardIndividual from '../../components/PointsCardIndividual'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import TabList from '../../components/TabList'
 import { useAppContext } from '../../contexts/AppContext'
 
@@ -17,6 +17,7 @@ type LeaderboardProps = {
 export const Leaderboard = (props: LeaderboardProps) => {
     const { type } = props
     const history = useHistory()
+    const { category, subCategory } = useParams<{ category?: string; subCategory?: string }>()
     const {
         state: { isHomeScreen },
         dispatch
@@ -28,7 +29,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
 
     const handleItemClick = useCallback(
         (id: number) => {
-            history.push(`/leaderboard/${id}`)
+            history.push(`/${category}/${subCategory}/top10/${id}`)
         },
         [history]
     )

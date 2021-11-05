@@ -1,16 +1,16 @@
 import React from 'react'
-import Categories from '../pages/Categories'
 import { Route, Switch } from 'react-router-dom'
-import Leaderboard from '../pages/Leaderboard'
+import { Categories, SubCategories, Leaderboard, Details } from '../pages'
 import { URLS } from './urls'
-import Details from '../pages/Details'
 
 export const Routes = () => {
-    const { categories, leaderboard, individualLeaderboard, details } = URLS
+    const { categories, subCategories, leaderboard, individualLeaderboard, details } = URLS
 
     return (
         <Switch>
             <Route path={categories} exact component={Categories} />
+
+            <Route path={subCategories} exact component={() => <SubCategories />} />
 
             <Route path={leaderboard} exact component={() => <Leaderboard type="common" />} />
 

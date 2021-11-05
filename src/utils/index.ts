@@ -1,3 +1,5 @@
+import { CategoryType } from '../types'
+
 export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDivElement | null)[]) => {
     if (cardIndex > cardAtTop) {
         for (let i = 0; i < cardIndex; i++) {
@@ -36,4 +38,45 @@ export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDiv
             }
         }
     }
+}
+
+const getSubcategoriesRecursion = (category: CategoryType) => {
+    let allSubcategories: CategoryType | CategoryType[] = []
+
+    if (!category.data) {
+        return category
+    } else {
+        for (let i = 0; i < category.data.length; i++) {
+            let categoryObject = getSubcategoriesRecursion(category.data[i])
+
+            if (Array.isArray(categoryObject)) {
+                allSubcategories = [...allSubcategories, ...categoryObject]
+            } else {
+                allSubcategories = [...allSubcategories, categoryObject]
+            }
+        }
+    }
+
+    return allSubcategories
+}
+
+export const getSubcategories = (categories: CategoryType[], category: string) => {
+    let desiredCategory = categories.filter((categoryItem) => categoryItem.slug === category)
+    let subCategories: CategoryType[] = []
+
+    if (desiredCategory.length > 0) {
+        let categoryData = desiredCategory[0].data
+
+        for (let i = 0; i < categoryData.length; i++) {
+            let subCategoriesData = getSubcategoriesRecursion(categoryData[i])
+
+            if (Array.isArray(subCategoriesData)) {
+                subCategories.push(...subCategoriesData)
+            } else {
+                subCategories.push(subCategoriesData)
+            }
+        }
+    }
+
+    return subCategories
 }
