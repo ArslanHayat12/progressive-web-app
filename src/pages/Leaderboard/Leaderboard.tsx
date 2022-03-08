@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { SET_IS_HOME_SCREEN, TOP10 } from '../../constants'
 import { LeaderboardWrapper, Top10Heading, Top3Wrapper } from './Style'
 import PointsCard from '../../components/PointsCard'
@@ -9,13 +9,15 @@ import PointsCardIndividual from '../../components/PointsCardIndividual'
 import { useHistory, useParams } from 'react-router-dom'
 import TabList from '../../components/TabList'
 import { useAppContext } from '../../contexts/AppContext'
+import { getTop10Items } from '../../utils'
 
 type LeaderboardProps = {
     type: 'individual' | 'common'
+    displayTabs?: boolean
 }
 
 export const Leaderboard = (props: LeaderboardProps) => {
-    const { type } = props
+    const { type, displayTabs } = props
     const history = useHistory()
     const { category, subCategory } = useParams<{ category?: string; subCategory?: string }>()
     const {
@@ -23,16 +25,28 @@ export const Leaderboard = (props: LeaderboardProps) => {
         dispatch
     } = useAppContext()
 
-    const tabsList = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4']
+    const [currentTab, setCurrentTab] = useState('details')
 
-    const top3 = participants.slice(0, 3)
+    const tabs = [
+        { label: 'Tab 1', key: 'tab1' },
+        { label: 'Tab 2', key: 'tab2' },
+        { label: 'Tab 2', key: 'tab3' },
+        { label: 'Tab 2', key: 'tab4' }
+    ]
+
+    const top10 = getTop10Items(category, subCategory)
+    const top3 = top10.slice(0, 3)
 
     const handleItemClick = useCallback(
         (id: number) => {
-            history.push(`/${category}/${subCategory}/top10/${id}`)
+            history.push(`/${category}/${subCategory}/${id}`)
         },
         [history, category, subCategory]
     )
+
+    const handleTabChange = useCallback((tab) => {
+        setCurrentTab(tab)
+    }, [])
 
     const Top3Participants = useMemo(() => {
         return top3.map((participant: Participant, index: number) => (
@@ -46,7 +60,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
 
     return (
         <LeaderboardWrapper>
-            <TabList tabs={tabsList} />
+            {displayTabs && <TabList tabs={tabs} activeTab={currentTab} onChange={handleTabChange} />}
 
             {type === 'common' ? (
                 <Top3Wrapper>{Top3Participants}</Top3Wrapper>
@@ -58,7 +72,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
                 </React.Fragment>
             )}
 
-            <PointsTable participants={participants.slice(3)} start={3} onClick={handleItemClick} />
+            <PointsTable participants={top10.slice(3)} start={3} onClick={handleItemClick} />
         </LeaderboardWrapper>
     )
 }

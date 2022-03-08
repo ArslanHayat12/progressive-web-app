@@ -14,6 +14,10 @@ export type CategoryType = {
     icon?: string
     data?: CategoryType[]
 }
+export type TabType = {
+    label: string
+    key: string
+}
 export type AvatarSize = 'small' | 'medium' | 'large'
 export type ImageType = 'avatar' | 'logo' | 'image'
 export type AlignType = 'left' | 'center' | 'right'

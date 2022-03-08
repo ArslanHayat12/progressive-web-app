@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import StackedCardCarousel from '../../components/StackedCardCarousel'
 import { DetailsWrapper } from './Style'
 import { MediumDarkCyanBlue1, White } from '../../colors'
@@ -8,11 +8,22 @@ import { SET_IS_HOME_SCREEN } from '../../constants'
 import { useAppContext } from '../../contexts/AppContext'
 
 export const Details = () => {
-    const tabsList = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4']
+    const [currentTab, setCurrentTab] = useState('details')
+
+    const tabs = [
+        { label: 'Details', key: 'details' },
+        { label: 'Specifications', key: 'specifications' },
+        { label: 'Images', key: 'images' }
+    ]
+
     const {
         state: { isHomeScreen },
         dispatch
     } = useAppContext()
+
+    const handleTabChange = useCallback((tab) => {
+        setCurrentTab(tab)
+    }, [])
 
     useEffect(() => {
         if (isHomeScreen) dispatch({ type: SET_IS_HOME_SCREEN, payload: false })
@@ -30,11 +41,29 @@ export const Details = () => {
         return content
     }, [])
 
+    const tabContent = useMemo(() => {
+        switch (currentTab) {
+            case 'images':
+                return (
+                    <StackedCardCarousel
+                        cardsContent={cards}
+                        cardsBackgroundColor={MediumDarkCyanBlue1}
+                        cardsContentColor={White}
+                    />
+                )
+
+            case 'specifications':
+            case 'details':
+            default:
+                return <></>
+        }
+    }, [currentTab])
+
     return (
         <DetailsWrapper>
-            <TabList tabs={tabsList} />
+            <TabList tabs={tabs} activeTab={currentTab} onChange={handleTabChange} />
 
-            <StackedCardCarousel cardsContent={cards} cardsBackgroundColor={MediumDarkCyanBlue1} cardsContentColor={White} />
+            {tabContent}
         </DetailsWrapper>
     )
 }

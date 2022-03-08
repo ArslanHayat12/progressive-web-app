@@ -46,7 +46,7 @@ export const RankStyle = styled.p`
     margin: 0px 0px 5px 10px;
     font-size: 16px;
     font-weight: 700;
-    text-shadow: 0px 0px 3px ${DullBlack(0.16)};
+    text-shadow: 0px 0px 3px ${DullBlack(0.5)};
 `
 
 export const DetailsWrapper = styled.div<CardType>`

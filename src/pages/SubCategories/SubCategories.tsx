@@ -32,7 +32,7 @@ export const SubCategories = () => {
                     type={cardType}
                     text={name}
                     image={image}
-                    handleClick={() => history.push(`/${category}/${slug}/top10`)}
+                    handleClick={() => history.push(`/${category}/${slug}`)}
                 />
             )
         })

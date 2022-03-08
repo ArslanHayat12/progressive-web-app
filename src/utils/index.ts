@@ -1,3 +1,4 @@
+import { data } from '../data'
 import { CategoryType } from '../types'
 
 export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDivElement | null)[]) => {
@@ -79,4 +80,8 @@ export const getSubcategories = (categories: CategoryType[], category: string) =
     }
 
     return subCategories
+}
+
+export const getTop10Items = (category: string, subcategory: string) => {
+    return data?.top10Items?.[category]?.[subcategory] || []
 }

@@ -1,23 +1,22 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useMemo } from 'react'
+import { TabType } from '../../types'
 import Tab from '../Tab'
 import { TabWrapper } from './Style'
 
 type TabListProps = {
-    tabs: string[]
+    tabs: TabType[]
+    activeTab: string
+    onChange: (tab: string) => void
 }
 
-export const TabList: React.FC<TabListProps> = ({ tabs }) => {
-    const [activeTabIndex, setActiveTabIndex] = useState(0)
-
-    const handleTabClick = useCallback((id: number) => {
-        setActiveTabIndex(id)
-    }, [])
-
+export const TabList: React.FC<TabListProps> = ({ tabs, activeTab, onChange }) => {
     const renderTabs = useMemo(() => {
-        return tabs.map((tab, index) => (
-            <Tab text={tab} active={index === activeTabIndex} handleClick={() => handleTabClick(index)} key={index} />
-        ))
-    }, [tabs, activeTabIndex, handleTabClick])
+        return tabs.map((tab) => {
+            const { label, key } = tab
 
-    return <TabWrapper>{renderTabs}</TabWrapper>
+            return <Tab text={label} active={label === activeTab} handleClick={() => onChange(key)} key={key} />
+        })
+    }, [tabs, activeTab])
+
+    return <TabWrapper columns={tabs.length}>{renderTabs}</TabWrapper>
 }
