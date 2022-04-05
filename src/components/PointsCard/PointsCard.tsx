@@ -5,11 +5,11 @@ import CardWithImage from '../CardWithImage'
 type PointsCardProps = {
     rank: number
     participant: Participant
-    onClick?: (id: number) => void
+    onClick?: (slug: string) => void
 }
 
 export const PointsCard: React.FC<PointsCardProps> = ({ rank, participant, onClick }) => {
-    const { id, name, avatar, points } = participant
+    const { id, name, avatar, points, slug } = participant
 
     return (
         <CardWithImage
@@ -18,7 +18,7 @@ export const PointsCard: React.FC<PointsCardProps> = ({ rank, participant, onCli
             rank={rank}
             image={avatar}
             points={points}
-            handleClick={() => onClick(id)}
+            handleClick={() => onClick(slug)}
         />
     )
 }

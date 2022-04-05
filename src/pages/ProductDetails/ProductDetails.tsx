@@ -1,13 +1,20 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import StackedCardCarousel from '../../components/StackedCardCarousel'
-import { DetailsWrapper } from './Style'
+import { DetailsWrapper, SpecificationsWrapper, TabContentStyled } from './Style'
 import { MediumDarkCyanBlue1, White } from '../../colors'
 import Image from '../../components/Image'
 import TabList from '../../components/TabList'
 import { SET_IS_HOME_SCREEN } from '../../constants'
 import { useAppContext } from '../../contexts/AppContext'
+import { DetailsCard, SpecificationCard } from '../../components'
+import { useParams } from 'react-router-dom'
+import { getProductDetails } from '../../utils'
+import { ProductDetailType, ProductImageType } from '../../types'
 
-export const Details = () => {
+export const ProductDetails = () => {
+    const { category, subCategory, brand, id } =
+        useParams<{ category?: string; subCategory?: string; brand?: string; id?: string }>()
+
     const [currentTab, setCurrentTab] = useState('details')
 
     const tabs = [
@@ -29,19 +36,21 @@ export const Details = () => {
         if (isHomeScreen) dispatch({ type: SET_IS_HOME_SCREEN, payload: false })
     }, [dispatch, isHomeScreen])
 
+    const tabsData: ProductDetailType = useMemo(() => {
+        return getProductDetails(category, subCategory, brand, id)
+    }, [category, subCategory, brand, id])
+
     const cards = useMemo(() => {
-        const content = []
+        const { images } = tabsData || { images: [] }
 
-        for (let i = 0; i < 5; i++) {
-            content.push(
-                <Image srcUrl={`${window.location.origin}/images/stacked-card-dummy-image.jpg`} type="image" customWidth="100%" />
-            )
-        }
-
-        return content
-    }, [])
+        return images?.map((image: ProductImageType) => (
+            <Image srcUrl={image?.url} key={image?.url} altText={image?.title} type="image" customWidth="100%" />
+        ))
+    }, [tabsData])
 
     const tabContent = useMemo(() => {
+        const { details, specifications } = tabsData
+
         switch (currentTab) {
             case 'images':
                 return (
@@ -53,17 +62,25 @@ export const Details = () => {
                 )
 
             case 'specifications':
+                return (
+                    <SpecificationsWrapper>
+                        {specifications &&
+                            specifications?.map((spec) => (
+                                <SpecificationCard title={spec?.title || ''} points={spec?.points || []} key={spec?.title} />
+                            ))}
+                    </SpecificationsWrapper>
+                )
             case 'details':
             default:
-                return <></>
+                return <DetailsCard description={details} />
         }
-    }, [currentTab])
+    }, [currentTab, tabsData, cards])
 
     return (
         <DetailsWrapper>
             <TabList tabs={tabs} activeTab={currentTab} onChange={handleTabChange} />
 
-            {tabContent}
+            <TabContentStyled>{tabContent}</TabContentStyled>
         </DetailsWrapper>
     )
 }

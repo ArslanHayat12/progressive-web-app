@@ -1,5 +1,5 @@
 import { data } from '../data'
-import { CategoryType } from '../types'
+import { CategoryType, Participant, ProductDetailType } from '../types'
 
 export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDivElement | null)[]) => {
     if (cardIndex > cardAtTop) {
@@ -82,6 +82,25 @@ export const getSubcategories = (categories: CategoryType[], category: string) =
     return subCategories
 }
 
-export const getTop10Items = (category: string, subcategory: string) => {
+export const getTop10Items = (category: string, subcategory: string): Participant[] => {
     return data?.top10Items?.[category]?.[subcategory] || []
+}
+
+export const getTop10Products = (category: string, subcategory: string, brand: string): Participant[] => {
+    return (
+        data?.top10Items?.[category]?.[subcategory]?.find((subcategoryBrand: Participant) => subcategoryBrand?.slug === brand)
+            ?.top10Products || []
+    )
+}
+
+export const getProductDetails = (category: string, subcategory: string, brand: string, id: string): ProductDetailType => {
+    return (
+        data?.top10Items?.[category]?.[subcategory]
+            ?.find((subcategoryBrand: Participant) => subcategoryBrand?.slug === brand)
+            ?.top10Products?.find((product: Participant) => product?.slug === id)?.productDetails || {
+            details: '',
+            specifications: [],
+            images: []
+        }
+    )
 }

@@ -14,7 +14,7 @@ export const TabList: React.FC<TabListProps> = ({ tabs, activeTab, onChange }) =
         return tabs.map((tab) => {
             const { label, key } = tab
 
-            return <Tab text={label} active={label === activeTab} handleClick={() => onChange(key)} key={key} />
+            return <Tab text={label} active={key === activeTab} handleClick={() => onChange(key)} key={key} />
         })
     }, [tabs, activeTab])
 

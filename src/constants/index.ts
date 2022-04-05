@@ -11,3 +11,5 @@ export const APP_NAME = 'Jugari.com'
 
 export const SET_DATA = 'SET_DATA'
 export const SET_IS_HOME_SCREEN = 'SET_IS_HOME_SCREEN'
+
+export const NO_RECORDS_FOUND = 'No Records'

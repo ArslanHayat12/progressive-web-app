@@ -7,7 +7,7 @@ type CardStyleProps = {
 }
 
 export const CardWrapper = styled.div<CardStyleProps>`
-    min-height: 450px;
+    /* min-height: 450px; */
     max-height: 450px;
     width: 100%;
     margin: 10px 0px;
