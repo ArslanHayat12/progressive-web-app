@@ -1,6 +1,8 @@
 export const URLS = {
     categories: '/',
-    leaderboard: '/leaderboard',
-    individualLeaderboard: '/leaderboard/individual',
-    details: '/leaderboard/:id/'
+    subCategories: '/:category',
+    brands: '/:category/:subCategory',
+    products: '/:category/:subCategory/:brand',
+    details: '/:category/:subCategory/:brand/:id',
+    individualLeaderboard: '/leaderboard/individual'
 }

@@ -12,6 +12,6 @@ export const HeaderText = styled.h1`
     margin: 0px;
     margin-left: 16px;
     color: ${White};
-    font-family: 'Open Sans Bold', sans-serif;
+    font-weight: 700;
     font-size: 18px;
 `

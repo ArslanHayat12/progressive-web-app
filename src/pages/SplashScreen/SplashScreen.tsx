@@ -1,11 +1,13 @@
 import React from 'react'
-import Image from '../../components/Image'
+import { White } from '../../colors'
+import Text from '../../components/Text'
+import { APP_NAME } from '../../constants'
 import { SplashScreenWrapper } from './Style'
 
 export const SplashScreen = () => {
     return (
         <SplashScreenWrapper>
-            <Image type="image" srcUrl={`${window.location.origin}/logo192.png`} />
+            <Text text={APP_NAME} weight="700" color={White} fontSize={24} />
         </SplashScreenWrapper>
     )
 }

@@ -1,34 +1,52 @@
-import React, { useCallback, useMemo } from 'react'
-import { LEADERBOARD, TOP10 } from '../../constants'
-import Header from '../../components/Header'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { SET_IS_HOME_SCREEN, TOP10 } from '../../constants'
 import { LeaderboardWrapper, Top10Heading, Top3Wrapper } from './Style'
 import PointsCard from '../../components/PointsCard'
 import { participants } from './leaderboardData'
 import { Participant } from '../../types'
 import PointsTable from '../../components/PointsTable'
 import PointsCardIndividual from '../../components/PointsCardIndividual'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import TabList from '../../components/TabList'
+import { useAppContext } from '../../contexts/AppContext'
+import { getTop10Items } from '../../utils'
 
 type LeaderboardProps = {
     type: 'individual' | 'common'
+    displayTabs?: boolean
 }
 
 export const Leaderboard = (props: LeaderboardProps) => {
-    const { type } = props
+    const { type, displayTabs } = props
     const history = useHistory()
+    const { category, subCategory } = useParams<{ category?: string; subCategory?: string }>()
+    const {
+        state: { isHomeScreen },
+        dispatch
+    } = useAppContext()
 
-    const top3 = participants.slice(0, 3)
+    const [currentTab, setCurrentTab] = useState('details')
 
-    const handleBackButtonClick = useCallback(() => {
-        history.goBack()
-    }, [history])
+    const tabs = [
+        { label: 'Tab 1', key: 'tab1' },
+        { label: 'Tab 2', key: 'tab2' },
+        { label: 'Tab 2', key: 'tab3' },
+        { label: 'Tab 2', key: 'tab4' }
+    ]
+
+    const top10 = getTop10Items(category, subCategory)
+    const top3 = top10.slice(0, 3)
 
     const handleItemClick = useCallback(
-        (id: number) => {
-            history.push(`/leaderboard/${id}`)
+        (slug: string) => {
+            history.push(`/${category}/${subCategory}/${slug}`)
         },
-        [history]
+        [history, category, subCategory]
     )
+
+    const handleTabChange = useCallback((tab) => {
+        setCurrentTab(tab)
+    }, [])
 
     const Top3Participants = useMemo(() => {
         return top3.map((participant: Participant, index: number) => (
@@ -36,9 +54,13 @@ export const Leaderboard = (props: LeaderboardProps) => {
         ))
     }, [top3, handleItemClick])
 
+    useEffect(() => {
+        if (isHomeScreen) dispatch({ type: SET_IS_HOME_SCREEN, payload: false })
+    }, [dispatch, isHomeScreen])
+
     return (
         <LeaderboardWrapper>
-            <Header heading={LEADERBOARD} onBackClick={handleBackButtonClick} />
+            {displayTabs && <TabList tabs={tabs} activeTab={currentTab} onChange={handleTabChange} />}
 
             {type === 'common' ? (
                 <Top3Wrapper>{Top3Participants}</Top3Wrapper>
@@ -50,7 +72,7 @@ export const Leaderboard = (props: LeaderboardProps) => {
                 </React.Fragment>
             )}
 
-            <PointsTable participants={participants.slice(3)} start={3} onClick={handleItemClick} />
+            <PointsTable participants={top10.slice(3)} start={3} onClick={handleItemClick} />
         </LeaderboardWrapper>
     )
 }

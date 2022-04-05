@@ -1,3 +1,6 @@
+import { data } from '../data'
+import { CategoryType, Participant, ProductDetailType } from '../types'
+
 export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDivElement | null)[]) => {
     if (cardIndex > cardAtTop) {
         for (let i = 0; i < cardIndex; i++) {
@@ -36,4 +39,68 @@ export const stackCards = (cardIndex: number, cardAtTop: number, cards: (HTMLDiv
             }
         }
     }
+}
+
+const getSubcategoriesRecursion = (category: CategoryType) => {
+    let allSubcategories: CategoryType | CategoryType[] = []
+
+    if (!category.data) {
+        return category
+    } else {
+        for (let i = 0; i < category.data.length; i++) {
+            const categoryObject = getSubcategoriesRecursion(category.data[i])
+
+            if (Array.isArray(categoryObject)) {
+                allSubcategories = [...allSubcategories, ...categoryObject]
+            } else {
+                allSubcategories = [...allSubcategories, categoryObject]
+            }
+        }
+    }
+
+    return allSubcategories
+}
+
+export const getSubcategories = (categories: CategoryType[], category: string) => {
+    const desiredCategory = categories.filter((categoryItem) => categoryItem.slug === category)
+    const subCategories: CategoryType[] = []
+
+    if (desiredCategory.length > 0) {
+        const categoryData = desiredCategory[0].data
+
+        for (let i = 0; i < categoryData.length; i++) {
+            const subCategoriesData = getSubcategoriesRecursion(categoryData[i])
+
+            if (Array.isArray(subCategoriesData)) {
+                subCategories.push(...subCategoriesData)
+            } else {
+                subCategories.push(subCategoriesData)
+            }
+        }
+    }
+
+    return subCategories
+}
+
+export const getTop10Items = (category: string, subcategory: string): Participant[] => {
+    return data?.top10Items?.[category]?.[subcategory] || []
+}
+
+export const getTop10Products = (category: string, subcategory: string, brand: string): Participant[] => {
+    return (
+        data?.top10Items?.[category]?.[subcategory]?.find((subcategoryBrand: Participant) => subcategoryBrand?.slug === brand)
+            ?.top10Products || []
+    )
+}
+
+export const getProductDetails = (category: string, subcategory: string, brand: string, id: string): ProductDetailType => {
+    return (
+        data?.top10Items?.[category]?.[subcategory]
+            ?.find((subcategoryBrand: Participant) => subcategoryBrand?.slug === brand)
+            ?.top10Products?.find((product: Participant) => product?.slug === id)?.productDetails || {
+            details: '',
+            specifications: [],
+            images: []
+        }
+    )
 }

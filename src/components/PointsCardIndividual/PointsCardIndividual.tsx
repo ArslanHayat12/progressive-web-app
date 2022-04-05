@@ -7,14 +7,14 @@ import { CardWrapper, ParticipantDetails, ResultItem, ResultWrapper } from './St
 
 type PointsCardIndividualProps = {
     participant: Participant
-    onClick?: (id: number) => void
+    onClick?: (slug: string) => void
 }
 
 export const PointsCardIndividual: React.FC<PointsCardIndividualProps> = ({ participant, onClick }) => {
-    const { id, name, avatar, points, correctAnswers, totalQuestions } = participant
+    const { id, name, avatar, points, slug, correctAnswers, totalQuestions } = participant
 
     return (
-        <CardWrapper onClick={() => onClick(id)}>
+        <CardWrapper onClick={() => onClick(slug)}>
             <Image type="avatar" srcUrl={avatar} size="medium" />
 
             <ParticipantDetails>

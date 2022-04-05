@@ -3,6 +3,7 @@ import useInterval from './hooks/useInterval'
 import Layout from './pages/Layout'
 import SplashScreen from './pages/SplashScreen'
 import { GlobalStyle } from './Style'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const App = () => {
     const [displaySplashScreen, setDisplaySplashScreen] = useState(true)
@@ -13,7 +14,13 @@ const App = () => {
         <React.Fragment>
             <GlobalStyle />
 
-            {displaySplashScreen ? <SplashScreen /> : <Layout />}
+            {displaySplashScreen ? (
+                <SplashScreen />
+            ) : (
+                <Router>
+                    <Layout />
+                </Router>
+            )}
         </React.Fragment>
     )
 }

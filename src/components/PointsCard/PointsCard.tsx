@@ -1,39 +1,24 @@
 import React from 'react'
-import { POINTS } from '../../constants'
 import { Participant } from '../../types'
-import {
-    CardWrapper,
-    DetailsWrapper,
-    ImageWrapper,
-    NameStyle,
-    PointsDetailCard,
-    PointsLabel,
-    PointsStyle,
-    RankStyle
-} from './Style'
+import CardWithImage from '../CardWithImage'
 
 type PointsCardProps = {
     rank: number
     participant: Participant
-    onClick?: (id: number) => void
+    onClick?: (slug: string) => void
 }
 
 export const PointsCard: React.FC<PointsCardProps> = ({ rank, participant, onClick }) => {
-    const { id, name, avatar, points } = participant
+    const { id, name, avatar, points, slug } = participant
 
     return (
-        <CardWrapper onClick={() => onClick(id)}>
-            <ImageWrapper imageUrl={avatar}>
-                <RankStyle>{rank < 10 ? `0${rank}` : rank}</RankStyle>
-            </ImageWrapper>
-
-            <DetailsWrapper>
-                <NameStyle>{name}</NameStyle>
-                <PointsDetailCard>
-                    <PointsLabel>{POINTS}</PointsLabel>
-                    <PointsStyle>{points}</PointsStyle>
-                </PointsDetailCard>
-            </DetailsWrapper>
-        </CardWrapper>
+        <CardWithImage
+            type="points-card"
+            name={name}
+            rank={rank}
+            image={avatar}
+            points={points}
+            handleClick={() => onClick(slug)}
+        />
     )
 }

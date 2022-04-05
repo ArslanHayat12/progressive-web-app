@@ -1,24 +1,25 @@
 import React from 'react'
-import Categories from '../pages/Categories'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
-import Leaderboard from '../pages/Leaderboard'
+import { Route, Switch } from 'react-router-dom'
+import { Categories, SubCategories, Leaderboard, ProductDetails } from '../pages'
+import Products from '../pages/Products'
 import { URLS } from './urls'
-import Details from '../pages/Details'
 
 export const Routes = () => {
-    const { categories, leaderboard, individualLeaderboard, details } = URLS
+    const { categories, subCategories, brands, products, individualLeaderboard, details } = URLS
 
     return (
-        <Router>
-            <Switch>
-                <Route path={categories} exact component={Categories} />
+        <Switch>
+            <Route path={categories} exact component={Categories} />
 
-                <Route path={leaderboard} exact component={() => <Leaderboard type="common" />} />
+            <Route path={subCategories} exact component={() => <SubCategories />} />
 
-                <Route path={individualLeaderboard} exact component={() => <Leaderboard type="individual" />} />
+            <Route path={brands} exact component={() => <Leaderboard type="common" />} />
 
-                <Route path={details} exact component={Details} />
-            </Switch>
-        </Router>
+            <Route path={products} exact component={() => <Products type="common" />} />
+
+            <Route path={individualLeaderboard} exact component={() => <Leaderboard type="individual" />} />
+
+            <Route path={details} exact component={ProductDetails} />
+        </Switch>
     )
 }

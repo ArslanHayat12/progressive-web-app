@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 import { DarkCyanBlue, DeepSkyBlue, DullBlack, White } from '../../colors'
+import { ImageCardType } from '../../types'
 
 type ImageWrapperProps = { imageUrl: string }
 
-export const CardWrapper = styled.div`
+type CardType = { type: ImageCardType }
+
+export const CardWrapper = styled.div<CardType>`
     background: ${DarkCyanBlue};
     display: grid;
     grid-template-rows: 1fr 0.94fr;
     border-radius: 5px;
-    box-shadow: 0 0 6px 0 ${DullBlack};
+    box-shadow: 0 0 6px 0 ${DullBlack(0.16)};
 
     &:hover,
     :active {
@@ -19,7 +22,7 @@ export const CardWrapper = styled.div`
         grid-template-rows: 1fr 0.54fr;
     }
     @media (max-width: 580px) {
-        grid-template-rows: 1fr 0.94fr;
+        grid-template-rows: 1fr ${(props) => (props.type === 'category-card' ? '0.60fr' : '0.94fr')};
     }
 `
 
@@ -42,21 +45,36 @@ export const ImageWrapper = styled.div<ImageWrapperProps>`
 export const RankStyle = styled.p`
     margin: 0px 0px 5px 10px;
     font-size: 16px;
-    font-family: 'Open Sans Bold';
-    text-shadow: 0px 0px 3px ${DullBlack};
+    font-weight: 700;
+    text-shadow: 0px 0px 3px ${DullBlack(0.5)};
 `
 
-export const DetailsWrapper = styled.div`
+export const DetailsWrapper = styled.div<CardType>`
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr ${(props) => props.type === 'points-card' && '1fr'};
     padding: 8px 10px;
     align-items: center;
+    ${(props) => props.type === 'category-card' && 'text-align: center;'}
 `
 
-export const NameStyle = styled.p`
+export const NameStyle = styled.p<CardType>`
     margin: 0px;
     font-size: 14px;
-    font-family: 'Open Sans Semi Bold', sans-serif;
+    font-weight: 600;
+
+    ${(props) =>
+        props.type === 'category-card' &&
+        `
+        @media (min-width: 326px) {
+            font-size: 14px;
+        }
+        @media (max-width: 325px) {
+            font-size: 11px;
+        }
+        @media (max-width: 315px) {
+            font-size: 10px;
+        }
+    `}
 `
 
 export const PointsDetailCard = styled.div`
@@ -77,6 +95,6 @@ export const PointsLabel = styled.p`
 export const PointsStyle = styled.p`
     color: ${DeepSkyBlue};
     margin: 0px;
-    font-family: 'Open Sans Bold';
+    font-weight: 700;
     font-size: 16px;
 `
